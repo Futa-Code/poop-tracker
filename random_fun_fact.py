@@ -16,7 +16,10 @@ if __name__ == "__main__":
         dato_curioso = fun.obtener_dato_curioso(fecha)
 
         # Imprimir el resultado
-        print(f'En la fecha {row['Fecha']}, {name} hizo un sorete y dijo "{row['Adicional']}"\nDato curioso: {dato_curioso}')
+        if row['Adicional'] == "":
+            print(f'En la fecha {row['Fecha']}, {name} hizo un sorete\nDato curioso: {dato_curioso}')
+        else:    
+            print(f'En la fecha {row['Fecha']}, {name} hizo un sorete y dijo "{row['Adicional']}"\nDato curioso: {dato_curioso}')
 
     except ValueError:
         print('Formato de fecha incorrecto. Utiliza el formato YYYY-MM-DD.')
