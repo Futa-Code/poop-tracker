@@ -18,6 +18,11 @@ def choose_names(name_list, amount) -> tuple:
         
     return names
 
+def get_random_line(filename):
+    with open(filename, 'r', encoding='utf-8') as file:
+        lines = file.readlines()
+        return random.choice(lines)
+
 def conversation(name_list, characters):
     names = choose_names(name_list, characters)
     
@@ -30,14 +35,14 @@ def conversation(name_list, characters):
     
     delay_print(intro)
     for i in range(dialogue):
-        row = fun.get_random_csv_row(f'processed-data/poops/{names[i%characters]}-poop.csv')
-        delay_print(f'{names[i%characters]}: {row['Adicional']}\n')
+        text = get_random_line(f'processed-data/text/{names[i%characters]}_aditional_text.txt')
+        delay_print(f'{names[i%characters]}: {text}\n')
 
 if __name__ == "__main__":
     name_list = ['Tomas', 'Ram', 'Santiago']
     
     try:
-        conversation(name_list, 2)
+        conversation(name_list, 3)
     except KeyboardInterrupt:
         print('\n~~~~~~~~~~~~~~\nImpaciente mi amigo\n~~~~~~~~~~~~~~\n')
 
